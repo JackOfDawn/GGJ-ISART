@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Move : MonoBehaviour {
 
-	public int speed = 10;
+	public int walkSpeed = 10;
+	public int runSpeed = 20;
 	public int jumpPower = 50;
 	public bool isFacingRight = true;
 	public bool grounded;
@@ -22,11 +23,14 @@ public class Move : MonoBehaviour {
 		if (value > 0 && !isFacingRight) {
 			FlipSprite();
 		}
-		if(value != 0)	{
-			rigidbody2D.AddForce (Vector2.right * value * speed);
+
+
+		if(value != 0 && grounded)	{
+			this.rigidbody2D.velocity = new Vector2(walkSpeed * value ,rigidbody2D.velocity.y);
+			//rigidbody2D.AddForce (Vector2.right * value * speed);
 		}
 
-		RaycastHit2D rayGrounded = Physics2D.Linecast ((Vector2) transform.position, (Vector2)transform.position - Vector2.up);
+		//RaycastHit2D rayGrounded = Physics2D.Linecast ((Vector2) transform.position, (Vector2)transform.position - Vector2.up);
 
 		if(grounded && Input.GetAxis("Jump") == 1)
 			this.rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, (float)jumpPower);
@@ -39,7 +43,6 @@ public class Move : MonoBehaviour {
 		Vector3 scale = transform.localScale;
 		scale.x *= -1;
 		transform.localScale = scale;
-		
 	}
 
 	void OnTriggerEnter2D() {
