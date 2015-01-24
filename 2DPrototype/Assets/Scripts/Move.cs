@@ -16,6 +16,12 @@ public class Move : MonoBehaviour {
 	void Update () {
 		float value = Input.GetAxis ("Horizontal");
 
+		if (value < 0 && isFacingRight) {
+			FlipSprite();
+		}
+		if (value > 0 && !isFacingRight) {
+			FlipSprite();
+		}
 		if(value != 0)	{
 			rigidbody2D.AddForce (Vector2.right * value * speed);
 		}
@@ -26,6 +32,14 @@ public class Move : MonoBehaviour {
 			this.rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, (float)jumpPower);
 		
 
+	}
+
+	void FlipSprite() {
+		isFacingRight = !isFacingRight;
+		Vector3 scale = transform.localScale;
+		scale.x *= -1;
+		transform.localScale = scale;
+		
 	}
 
 	void OnTriggerEnter2D() {
