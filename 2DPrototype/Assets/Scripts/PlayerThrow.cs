@@ -4,13 +4,13 @@ using System.Collections;
 public class PlayerThrow : MonoBehaviour {
 
 	// Use this for initialization
-	public GameObject playerRef;
 	public GameObject throwable;
+	public int xOffset = 1;
 	public float MAX_COOLDOWN = 1;
 	private float cooldown;
-
+	private Vector3 offset;
 	void Start () {
-	
+		offset = new Vector3 (xOffset, 0 , 0);
 	}
 	
 	// Update is called once per frame
@@ -24,15 +24,20 @@ public class PlayerThrow : MonoBehaviour {
 	}
 
 	void CreateThrowable()	{
-		Instantiate (throwable, transform.position, Quaternion.identity);
-		ThrowableScript shot = throwable.GetComponent<ThrowableScript>();
-		if (shot) {
-			Move playerMove = playerRef.GetComponent<Move>();
-			if(playerMove)	{
-				if(playerMove.isFacingRight)
-					shot.direction = 1;
-				else
-					shot.direction = -1;
+		Move playerMove = gameObject.GetComponent<Move>();
+		if (playerMove) {
+			int direction;
+			if (playerMove.isFacingRight)
+				direction = 1;
+			else
+				direction = -1;
+
+			Instantiate (throwable, transform.position + (offset * direction), Quaternion.identity);
+
+			ThrowableScript shot = throwable.GetComponent<ThrowableScript> ();
+			if (shot) {
+				shot.playerSpeed = playerMove.speed;
+				shot.direction = direction;
 			}
 		}
 	}

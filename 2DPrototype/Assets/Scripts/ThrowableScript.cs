@@ -7,6 +7,7 @@ public class ThrowableScript : MonoBehaviour {
 	public int speed = 5;
 	public float activeSeconds = 3;
 	public int direction = 1; // 1 = right, -1 = left
+	public int playerSpeed;
 	private float remainingSeconds;
 	void Start () {
 		remainingSeconds = activeSeconds;
@@ -15,7 +16,7 @@ public class ThrowableScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector2 velocity = rigidbody2D.velocity;
-		velocity.x = speed * direction;// * Time.deltaTime;
+		velocity.x = (playerSpeed + speed) * direction;// * Time.deltaTime;
 		rigidbody2D.velocity = velocity;
 
 		remainingSeconds -= Time.deltaTime;
@@ -24,8 +25,4 @@ public class ThrowableScript : MonoBehaviour {
 		}
 	}
 
-	public void setDirection()
-	{
-
-	}
 }

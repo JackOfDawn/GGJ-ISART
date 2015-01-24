@@ -5,6 +5,7 @@ public class Move : MonoBehaviour {
 
 	public int walkSpeed = 10;
 	public int runSpeed = 20;
+	public int speed = 0;
 	public int jumpPower = 50;
 	public bool isFacingRight = true;
 	public bool grounded;
@@ -24,9 +25,15 @@ public class Move : MonoBehaviour {
 			FlipSprite();
 		}
 
+		if (value == 0)
+				speed = 0;
+		else if (Input.GetAxis ("Fire2") > 0) 
+				speed = runSpeed;
+		else
+				speed = walkSpeed;
 
-		if(value != 0 && grounded)	{
-			this.rigidbody2D.velocity = new Vector2(walkSpeed * value ,rigidbody2D.velocity.y);
+		if(value != 0)	{
+			this.rigidbody2D.velocity = new Vector2(speed * value ,rigidbody2D.velocity.y);
 			//rigidbody2D.AddForce (Vector2.right * value * speed);
 		}
 
