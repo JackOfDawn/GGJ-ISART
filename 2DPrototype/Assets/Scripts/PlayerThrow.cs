@@ -17,7 +17,7 @@ public class PlayerThrow : MonoBehaviour {
 	void Update () {
 		cooldown -= Time.deltaTime;
 		//if throw button is press, create throwable with velocity in player's direction?
-		if (Input.GetAxis ("Fire1") == 1  && cooldown < 0) {
+		if (Input.GetAxis ("Fire1") > 0  && cooldown <= 0) {
 			CreateThrowable();
 			cooldown = MAX_COOLDOWN;
 		}
@@ -31,14 +31,7 @@ public class PlayerThrow : MonoBehaviour {
 				direction = 1;
 			else
 				direction = -1;
-
-			Instantiate (throwable, transform.position + (offset * direction), Quaternion.identity);
-
-			ThrowableScript shot = throwable.GetComponent<ThrowableScript> ();
-			if (shot) {
-				shot.playerSpeed = playerMove.speed;
-				shot.direction = direction;
-			}
+			Instantiate (throwable, transform.position + (offset * direction), gameObject.transform.rotation);
 		}
 	}
 }
