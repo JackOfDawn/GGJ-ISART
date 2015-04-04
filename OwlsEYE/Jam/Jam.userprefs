@@ -1,0 +1,22 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\ExitScript.cs">
+    <Files>
+      <File FileName="Assets\Script\Menu.cs" Line="11" Column="1" />
+      <File FileName="Assets\Script\HubScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\DoorScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\ObjetScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\PlayerThrow.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\BlockDestructionScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\SoundManagerScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Move.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\BoutonScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\SwitchScript1.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\ExitScript.cs" Line="8" Column="23" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
